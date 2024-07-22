@@ -1,0 +1,73 @@
+<%- include('./partials/header') %>
+
+<div class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8 text-center">Your Shopping Cart</h1>
+
+
+    <% if (Object.keys(grandCart.items).length === 0) { %>
+        <div class="text-center py-16">
+            <h2 class="text-2xl font-semibold text-gray-600">Your cart is empty</h2>
+            <p class="mt-4 text-gray-500">Add some items to your cart and come back!</p>
+            <a href="/shop" class="mt-8 inline-block bg-blue-600 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:bg-blue-700 transition duration-300">
+                Continue Shopping
+            </a>
+        </div>
+    <% } else { %>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <% Object.keys(grandCart.items).forEach(function(key, index) { %>
+                <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                    <div class="w-full h-48 flex justify-center items-center bg-[<%= grandCart.items[key].item.bgcolor %>]">
+                        <img class="h-36 object-contain" src="data:image/jpeg;base64, <%= grandCart.items[key].item.image.toString('base64') %>" alt="<%= grandCart.items[key].item.name %>">
+                    </div>
+                    <div class="p-3 bg-[<%= grandCart.items[key].item.panelcolor %>]">
+                        <h3 class="text-lg font-semibold mb-2"><%= grandCart.items[key].item.name %></h3>
+                        <div class="flex justify-between items-center">
+                            <div class="flex items-center gap-1">
+                                <a href="/decreaseproduct/<%=grandCart.items[key].item._id%>">
+                                <button class="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 text-sm font-bold">-</button></a>
+                                <span class="px-2 py-0.5 rounded-md bg-white text-black text-sm font-bold"><%=grandCart.items[key].quantity%></span>
+                                <a href="/increaseproduct/<%=grandCart.items[key].item._id%>">
+                                <button class="w-6 h-6 bg-white text-black rounded-full flex items-center justify-center hover:bg-gray-200 text-sm font-bold">+</button></a>
+                            </div>
+                            <h4 class="text-base font-bold">₹ <%= grandCart.items[key].totalPrice.toFixed(2) %></h4>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-[<%= grandCart.items[key].item.textcolor %>] text-white">
+                        <h4 class="text-base font-semibold">Price Breakdown</h4>
+                        <div class="mt-1 space-y-0.5 text-sm">
+                            <div class="flex justify-between"><span>Product MRP:</span><span>₹ <%= grandCart.items[key].item.price %></span></div>
+                            <div class="flex justify-between"><span>Discount:</span><span><%= grandCart.items[key].item.discount %>%</span></div>
+                            <div class="flex justify-between"><span>Shipping Fee:</span><span>₹ 0</span></div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+
+    <div class="mt-12 bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-4">Order Summary</h2>
+        <div class="flex justify-between items-center border-b pb-4 mb-4">
+            <span class="text-lg">Total Items:</span>
+            <span class="text-lg font-semibold"><%= totalQuantity %></span>
+        </div>
+        <div class="flex justify-between items-center border-b pb-4 mb-4">
+            <span class="text-lg">Platform Fee:</span>
+            <span class="text-lg font-semibold">₹ 20</span>
+        </div>
+        <div class="flex justify-between items-center border-b pb-4 mb-4">
+            <span class="text-lg">Total Amount:</span>
+            <span class="text-2xl font-bold text-green-600">₹ <%= finalBill.toFixed(2) %></span>
+        </div>
+        <div class="flex justify-center">
+            <a href="/payment" class="w-1/4 bg-blue-600 text-white py-3 rounded-lg text-lg font-semibold hover:bg-blue-700 transition duration-300 block text-center">
+                <button class="w-full h-full">
+                    Proceed to Pay
+                </button>
+            </a>
+            
+    </div>
+    </div>
+    <% } %>
+</div>
+
+<%- include('./partials/footer') %>

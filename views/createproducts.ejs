@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Product</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    
+    <% if(success.length>0){ %>
+    <div id="successMessage" class="fixed top-5 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-md shadow-lg z-50 transition-opacity duration-300">
+        <span class="inline-block"><%= success %></span>
+    </div>
+    <% } %>
+
+    <div class="min-h-screen flex">
+        <div class="w-1/4 bg-white shadow-lg">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Dashboard</h2>
+                <nav>
+                    <a href="" class="block py-2 px-4 text-gray-700 hover:bg-blue-500 hover:text-white rounded transition duration-200">All Products</a>
+                    <a href="" class="block py-2 px-4 text-gray-700 hover:bg-blue-500 hover:text-white rounded transition duration-200">Create New Product</a>
+                </nav>
+            </div>
+        </div>
+        
+        <main class="w-3/4 p-8">
+            <div class="bg-white rounded-lg shadow-lg p-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6">Create New Product</h2>
+                <form autocomplete="off" action="/products/create" method="post" enctype="multipart/form-data">
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-700 mb-4">Product Details</h3>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="image">Product Image</label>
+                            <input name="image" id="image" type="file" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <input name="name" type="text" placeholder="Product Name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <input name="price" type="text" placeholder="Product Price" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <input name="discount" type="text" placeholder="Discount Price" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                    </div>
+
+                    <div class="mb-8">
+                        <h3 class="text-xl font-semibold text-gray-700 mb-4">Panel Details</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <input name="bgcolor" type="text" placeholder="Background Color" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <input name="panelcolor" type="text" placeholder="Panel Color" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                            <input name="textcolor" type="text" placeholder="Text Color" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        </div>
+                    </div>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition duration-200" type="submit">
+                        Create New Product
+                    </button>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var successMessage = document.getElementById('successMessage');
+            if (successMessage) {
+                setTimeout(function() {
+                    successMessage.classList.add('opacity-0');
+                    setTimeout(function() {
+                        successMessage.style.display = 'none';
+                    }, 300);
+                }, 5000);
+            }
+        });
+    </script>
+    <%- include('./partials/footer') %>
+</body>
+</html>

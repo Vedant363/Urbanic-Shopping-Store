@@ -1,0 +1,81 @@
+<%- include('./partials/header') %>
+
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">My Account</h1>
+
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-2xl mx-auto">
+            <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-6 text-white">
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <!-- <img src="https://via.placeholder.com/150" alt="Profile Photo" class="w-24 h-24 rounded-full border-4 border-white"> -->
+                        <img class="w-24 h-24 rounded-full border-4 border-white" src="data:image/jpeg;base64,<%= user.image %>" alt="Profile pic">
+                        <form id="imageForm" action="/users/postimage" method="post" enctype="multipart/form-data" autocomplete="off">
+                            <label for="image-upload" class="absolute bottom-0 right-0 bg-white rounded-full p-1 shadow-lg cursor-pointer">
+                                <i class="ri-camera-line text-gray-600"></i>
+                            </label>
+                            <input id="image-upload" name="image" type="file" accept="image/*" style="display: none;">
+                        </form>
+                        
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-semibold"><%=user.fullname%></h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-6">
+                <form action="/users/updateinfo" method="post" autocomplete="off">
+                    <div class="mb-6">
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name</label>
+                        <input type="text" id="name" name="name" value="<%=user.fullname%>" 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                        <input type="email" id="email" name="email" value="<%=user.email%>" 
+                               class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+
+                    <div class="flex justify-end">
+                        <button type="submit" 
+                                class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-8 max-w-2xl mx-auto">
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Account Actions</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="/passwordchange" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition duration-200 flex items-center">
+                    <i class="ri-lock-password-line text-2xl text-blue-500 mr-3"></i>
+                    <span>Change Password</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition duration-200 flex items-center">
+                    <i class="ri-shield-keyhole-line text-2xl text-green-500 mr-3"></i>
+                    <span>Privacy Settings</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition duration-200 flex items-center">
+                    <i class="ri-history-line text-2xl text-purple-500 mr-3"></i>
+                    <span>Order History</span>
+                </a>
+                <a href="#" class="bg-white p-4 rounded-lg shadow hover:shadow-md transition duration-200 flex items-center">
+                    <i class="ri-customer-service-2-line text-2xl text-yellow-500 mr-3"></i>
+                    <span>Support</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('image-upload').addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                document.getElementById('imageForm').submit();
+            }
+        });
+    </script>
+    <%- include('./partials/footer') %>

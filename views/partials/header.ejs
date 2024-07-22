@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urbanic</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/images/img/favicon/site.webmanifest">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    </style>
+</head>
+
+<body class="font-['Poppins', sans-serif] bg-gray-50">
+    <nav class="bg-white shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <h3 class="text-2xl font-bold text-gray-800">Urbanic</h3>
+                </div>
+                <% var loggedin = typeof loggedin !== "undefined" ? loggedin : true %>
+                <% if(loggedin) { %>
+                <div class="flex items-center">
+                    <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="/shop" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">Shop</a>
+                        <a href="/cart" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                            <i class="ri-shopping-cart-2-line mr-1"></i>Cart
+                        </a>
+                        <a href="/myaccount" class="text-gray-700 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                            <i class="ri-user-line mr-1"></i>My Account
+                        </a>
+                        <a href="/users/logout" class="text-red-600 hover:text-red-800 px-3 py-2 rounded-md text-sm font-medium transition duration-150 ease-in-out">
+                            <i class="ri-logout-box-r-line mr-1"></i>Logout
+                        </a>
+                    </div>
+                    <div class="sm:hidden">
+                        <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <i class="ri-menu-line text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+                <% } %>
+            </div>
+        </div>

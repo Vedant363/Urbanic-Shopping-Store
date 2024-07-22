@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
+</head>
+<body class="bg-gradient-to-br from-green-50 to-green-100 min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-xl p-8 max-w-md w-full">
+        <div class="text-center">
+            <div class="mx-auto w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                <i class="ri-check-line text-5xl text-green-500"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Payment Successful!</h2>
+            <p class="text-gray-600 mb-8">Your transaction has been completed successfully.</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-lg p-6 mb-8">
+            <div class="flex justify-between mb-4">
+                <span class="text-gray-600">Amount Paid:</span>
+                <span class="font-semibold text-gray-800">₹ <%=finalBill%></span>
+            </div>
+            <div class="flex justify-between mb-4">
+                <span class="text-gray-600">Transaction ID:</span>
+                <span class="font-semibold text-gray-800"><%=randomId%></span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-gray-600">Date:</span>
+                <span class="font-semibold text-gray-800"><%=formattedDate%></span>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="/shop" class="inline-block bg-green-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-green-600 transition duration-300 mb-4">
+                Continue Shopping
+            </a>
+            <p class="text-gray-600 text-sm">
+                A confirmation email has been sent to your registered email address.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
