@@ -6,7 +6,6 @@ Urbanic is a premium shopping website built with Node.js, Express.js, and MongoD
 
 - User authentication
 - Product management
-- Secure transactions
 - Dynamic templating with EJS
 - Efficient server-side rendering
 
@@ -29,7 +28,7 @@ Urbanic is a premium shopping website built with Node.js, Express.js, and MongoD
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/urbanic.git
+    git clone https://github.com/Vedant363/Urbanic-Store.git
     ```
 2. Navigate to the project directory:
     ```bash
@@ -60,4 +59,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE.md).
